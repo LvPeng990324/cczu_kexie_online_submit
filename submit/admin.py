@@ -6,10 +6,10 @@ from .csvMaker import export_as_csv_action
 
 
 class NewPersonProfileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'sex', 'stu_id', 'class_num', 'school', 'department', 'phone', 'qq_num', 'changeable')
+    list_display = ('name', 'sex', 'class_num', 'school', 'department', 'phone', 'qq_num', 'changeable')
     list_filter = ('department', 'class_num', 'school', 'changeable', 'sex')
-    search_fields = ('name', 'sex', 'stu_id', 'class_num', 'school' 'department', 'phone', 'qq_num', 'changeable')
-    actions = [export_as_csv_action('导出表格', fields=['name', 'sex', 'stu_id', 'class_num', 'school' 'department', 'phone', 'qq_num', 'changeable'])]
+    search_fields = ('name', 'sex', 'class_num', 'school' 'department', 'phone', 'qq_num', 'changeable')
+    actions = [export_as_csv_action('导出表格', fields=['name', 'sex', 'class_num', 'school' 'department', 'phone', 'qq_num', 'changeable'])]
 
 
 class KeXiePersonProfileAdmin(admin.ModelAdmin):

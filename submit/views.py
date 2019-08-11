@@ -19,7 +19,6 @@ def new_person_submit(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         sex = request.POST.get('sex')
-        stu_id = request.POST.get('stu_id')
         class_num = request.POST.get('class_num')
         school = request.POST.get('school')
         department = request.POST.get('department')
@@ -31,7 +30,6 @@ def new_person_submit(request):
             NewPerson.objects.get_or_create(
                 name=name,
                 sex=sex,
-                stu_id=stu_id,
                 class_num=class_num,
                 school=school,
                 department=department,
@@ -40,11 +38,10 @@ def new_person_submit(request):
                 changeable=changeable
             )
         except IntegrityError as e:
-            return HttpResponse('提交出错，此学号已有记录，且你提交的内容与记录内容有不同处，重复提交无效。如需修改信息请联系我们')
+            return HttpResponse('提交出错，此手机号已有记录，且你提交的内容与记录内容有不同处，重复提交无效。如需修改信息请联系我们')
         '''
         print(name)
         print(sex)
-        print(stu_id)
         print(class_num)
         print(school)
         print(department)
@@ -57,11 +54,10 @@ def new_person_submit(request):
         return render(request, 'new_person.html')
 
 
-def submit(request, name, sex, class_num, school, stu_id, phone, qq_num, department, changeable):
+def submit(request, name, sex, class_num, school, phone, qq_num, department, changeable):
     NewPerson.objects.get_or_create(
         name=name,
         sex=sex,
-        stu_id=stu_id,
         class_num=class_num,
         school=school,
         department=department,

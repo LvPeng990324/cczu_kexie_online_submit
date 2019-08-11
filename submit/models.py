@@ -2,15 +2,15 @@ from django.db import models
 
 # Create your models here.
 
+
 # 科协招新名单
 class NewPerson(models.Model):
     name = models.CharField(max_length=10, verbose_name='姓名')
     sex = models.CharField(max_length=2, verbose_name='性别')
-    stu_id = models.CharField(max_length=10, primary_key=True, verbose_name='学号')
     class_num = models.CharField(max_length=10, verbose_name='班级')
     school = models.CharField(max_length=10, verbose_name='校区')
     department = models.CharField(max_length=10, verbose_name='意向部门')
-    phone = models.CharField(max_length=15, verbose_name='手机号')
+    phone = models.CharField(max_length=15, verbose_name='手机号', primary_key=True)
     qq_num = models.CharField(max_length=15, verbose_name='QQ号')
     changeable = models.CharField(max_length=2, verbose_name='是否接受调剂')
 
