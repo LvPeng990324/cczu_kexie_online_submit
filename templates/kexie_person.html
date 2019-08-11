@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>科仔信息系统</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'tooplate.css' %}">
+</head>
+
+<body id="register" style="background-image: url({% static 'input-bg-01.jpg' %})">
+    <div class="container">
+        <div class="row tm-register-row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-register-col-l">
+                <form action="{% url 'kexie_person' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label class="mr-4">
+                            <input class="with-gap" name="sex" type="radio" value="男" required/>
+                            <span>男</span>
+                        </label>
+                        <label class="mr-4">
+                            <input class="with-gap" name="sex" type="radio" value="女" required/>
+                            <span>女</span>
+                        </label>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="mr-4">
+                            <input class="with-gap" name="school" type="radio" value="武进校区" required/>
+                            <span>武进校区</span>
+                        </label>
+						<br>
+                        <label class="mr-4">
+                            <input class="with-gap" name="school" type="radio" value="白云校区" required/>
+                            <span>白云校区</span>
+                        </label>
+						<br>
+                        <label class="mr-4">
+                            <input class="with-gap" name="school" type="radio" value="西太湖校区" required/>
+                            <span>西太湖校区</span>
+                        </label>
+                    </div>
+
+                    <div class="input-field">
+                        <input placeholder="姓名" id="name" name="name" type="text" class="validate" required>
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="学院" id="academy" name="academy" type="text" class="validate" required>
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="班级" id="class_num" name="class_num" type="text" class="validate" required>
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="学号" id="stu_id" name="stu_id" type="text" class="validate" pattern="[0-9]{8}">
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="宿舍" id="dorm" name="dorm" type="text" class="validate" required>
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="手机号" id="phone" name="phone" type="text" class="validate" pattern="[0-9]{11}">
+                    </div>
+					
+                    <div class="input-field">
+                        <input placeholder="QQ号" id="qq_num" name="qq_num" type="text" class="validate" required>
+                    </div>
+					
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0 tm-pr-xs-0">
+                            <select name="department" required>
+                                <option value="">部门</option>
+                                <option value="办公室">办公室</option>
+                                <option value="科创部">科创部</option>
+                                <option value="外联部">外联部</option>
+                                <option value="网信部">网信部</option>
+                                <option value="宣传部">宣传部</option>
+                                <option value="项管部">项管部</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0 tm-pr-xs-0">
+                            <select name="department_job" required>
+                                <option value="">职务</option>
+                                <option value="部长">部长</option>
+                                <option value="副部长">副部长</option>
+                                <option value="干事">干事</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-right mt-4">
+                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text"><b>提交</b></button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-register-col-r">
+                <header class="mb-5">
+                    <h3 class="mt-0 text-white">科仔信息系统</h3>
+                    <p class="grey-text">为方便日后工作管理，现收集科协成员基本信息，请如实填写。</p>
+                    <p class="grey-text">如果提交后意识到信息有误，请联系部长修改。</p>
+                </header>
+
+            </div>
+        </div>
+        <footer class="row tm-mt-big mb-3">
+            <div class="col-xl-12">
+                <p class="text-center grey-text text-lighten-2 tm-footer-text-small">
+					友情链接-<a href="http://tw.cczu.edu.cn/dxskx/main.htm" target="_blank" title="科协官网">科协官网</a>
+					<br>
+					本系统由校科协网信部提供技术支持~
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{% static 'jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'materialize.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+</body>
+
+</html>
