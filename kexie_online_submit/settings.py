@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'qbzgl_^9(_*kcfd2)y85^u^!%zfy^27t5w(#7cxgxk4e#+@t39'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', 'cczu_kexie_online_submit.com', ]
 
 
 # Application definition
