@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'kexie_online_submit.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -84,7 +84,18 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+'''
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kexie_online_submit',  # 数据库名字(需要先创建)
+        'USER': 'pi',  # 登录用户名
+        'PASSWORD': 'lp990324',  # 密码
+        'HOST': '',  # 数据库IP地址,留空默认为localhost
+        'PORT': '5432',  # 端口
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
