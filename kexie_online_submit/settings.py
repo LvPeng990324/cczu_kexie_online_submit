@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'submit',
+    'activity_submit',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'kexie_online_submit',  # 数据库名字(需要先创建)
-        'USER': 'pi',  # 登录用户名
+        'USER': 'lvpeng',  # 登录用户名
         'PASSWORD': 'lp990324',  # 密码
         'HOST': '',  # 数据库IP地址,留空默认为localhost
         'PORT': '5432',  # 端口
