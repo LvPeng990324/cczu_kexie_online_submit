@@ -1,3 +1,17 @@
 from django.contrib import admin
+from .models import Student, SystemControl, Activity
 
-# Register your models here.
+
+@admin.register(SystemControl)
+class SystemControlInformation(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Activity)
+class ActivityInformation(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Student)
+class StudentInformation(admin.ModelAdmin):
+    list_display = ('name', 'stu_id', 'class_num', 'academy', 'qq_num', 'phone', 'team_id', 'is_leader')
