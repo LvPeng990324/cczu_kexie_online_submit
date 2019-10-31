@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>校科协线上报名</title>
+
+    <link rel="stylesheet" href="{% static 'form_1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'form_1/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'form_1/css/tooplate.css' %}">
+</head>
+
+<body id="application">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  mx-auto">
+                <header class="mt-5 mb-5 text-center">
+                    <h3><b>活动名称</b></h3>
+                    <p class="tm-form-description">活动介绍</p>
+                    <p class="tm-form-description">QQ群号</p>
+					<img width="200" src="img/img.png" alt="二维码加载失败">
+                </header>
+                <form action="" method="post" enctype="multipart/form-data" class="tm-form-white tm-font-big">
+                    <div class="tm-bg-white tm-form-pad-big center">
+						<button class="waves-effect btn-large btn-large-white">我是队长</button>
+					</div>
+					
+                    <div class="tm-bg-white tm-form-pad-big center">
+						<button class="waves-effect btn-large btn-large-white">我是队员</button>
+					</div>
+                </form>
+            </div>
+        </div>
+        <footer class="row tm-mt-big mb-3">
+            <div class="col-xl-12 text-center">
+                <p class="d-inline-block tm-bg-black white-text py-2 tm-px-5">
+                    欢迎加入科协大家庭，深入了解请访问-
+					<a href="http://tw.cczu.edu.cn/dxskx/main.htm" target="_blank" title="科协官网">科协官网</a></p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
