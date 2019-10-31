@@ -13,23 +13,28 @@
     <link rel="stylesheet" href="{% static 'form_1/css/tooplate.css' %}">
 </head>
 
-<body id="application">
+<body id="application" style="background-image: url({% static 'form_1/img/input-bg-03.jpg' %})">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  mx-auto">
                 <header class="mt-5 mb-5 text-center">
-                    <h3><b>活动名称</b></h3>
-                    <p class="tm-form-description">活动介绍</p>
-                    <p class="tm-form-description">QQ群号</p>
-					<img width="200" src="img/img.png" alt="二维码加载失败">
+                    <h3><b>{{ name }}</b></h3>
+                    <p class="tm-form-description">{{ introduction }}</p>
+                    <p class="tm-form-description">{{ qq_num }}</p>
+					<img width="200" src="/activity_submit{{ qq_QRcode.url }}" alt="二维码加载失败">
                 </header>
                 <form action="" method="post" enctype="multipart/form-data" class="tm-form-white tm-font-big">
+                    {% csrf_token %}
+                    <input id="id_team_leader" name="team_leader" value="队长" hidden>
                     <div class="tm-bg-white tm-form-pad-big center">
-						<button class="waves-effect btn-large btn-large-white">我是队长</button>
+						<button type="submit" class="waves-effect btn-large btn-large-white">我是队长</button>
 					</div>
-					
+                </form>
+                <form action="" method="post" enctype="multipart/form-data" class="tm-form-white tm-font-big">
+                    {% csrf_token %}
+                    <input id="id_teammate" name="teammate" value="队员" hidden>
                     <div class="tm-bg-white tm-form-pad-big center">
-						<button class="waves-effect btn-large btn-large-white">我是队员</button>
+						<button type="submit" class="waves-effect btn-large btn-large-white">我是队员</button>
 					</div>
                 </form>
             </div>
