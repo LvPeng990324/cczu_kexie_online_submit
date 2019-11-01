@@ -10,17 +10,24 @@
 	
     <link rel="stylesheet" href="{% static 'form_1/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'form_1/css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'form_1/css/tooplate.css' %}">s
+    <link rel="stylesheet" href="{% static 'form_1/css/tooplate.css' %}">
 </head>
 
-<body id="application">
+<body id="application" style="background-image: url({% static 'form_1/img/input-bg-03.jpg' %})">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  mx-auto">
                 <header class="mt-5 mb-5 text-center">
                     <h3><b>报名成功</b></h3>
-                    <p class="tm-form-description">你的队伍号</p>
-                    <p class="tm-form-description">队伍成员</p>
+                    <p class="tm-form-description">{{ academy }} {{ class_num }}班的{{ name }}同学,</p>
+                    <p class="tm-form-description">恭喜你报名成功！</p>
+                    <p class="tm-form-description">你的队伍号是{{ team_id }}</p>
+                    <p class="tm-form-description">你的队伍成员有：</p>
+                    {% for teammate_name in teammate_names %}
+                        <p class="tm-form-description">{{ teammate_name.name }}</p>
+                    {% endfor %}
+                    <p class="tm-form-description">如果以上信息有误，请联系管理员修改～</p>
+                    <br>
                     <p class="tm-form-description">QQ群号</p>
 					<img width="200" src="/activity_submit{{ qq_QRcode.url }}" alt="二维码加载失败">
                 </header>

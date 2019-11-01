@@ -6,7 +6,11 @@ from . import views
 
 
 urlpatterns = [
+    # 主页url
     path('', views.index, name='index'),
+
+    # 报名表提交url
+    path('submit_form/<teammate>', views.submit_form, name='submit_form'),
 
     # 定义图片url
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
