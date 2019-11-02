@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  mx-auto">
                 <header class="mt-5 mb-5 text-center">
-                    <h3><b>大标题</b></h3>
-                    <p class="tm-form-description">说明文字</p>
+                    <h3><b>{{ title }}</b></h3>
+                    <p class="tm-form-description">{{ context }}</p>
                     {% if error_message %}
                         <p class="tm-form-description" style="color: red">{{ error_message }}</p>
                     {% endif %}

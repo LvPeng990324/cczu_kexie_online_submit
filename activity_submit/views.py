@@ -152,8 +152,11 @@ def submit_form(response, teammate):
         # 传参并引导前端页面
         return render(response, 'success.html', context=context)
     else:
-        # 打包成员信息并引导信息表页面
+        # 打包成员信息以及标题和文字并引导信息表页面
+        data = Activity.objects.all()[0]
         context = {
             'teammate': teammate,
+            'title': data.title,
+            'context': data.context,
         }
         return render(response, 'submit_form.html', context=context)
