@@ -14,4 +14,4 @@ class ActivityInformation(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentInformation(admin.ModelAdmin):
-    list_display = ('name', 'stu_id', 'class_num', 'academy', 'qq_num', 'phone', 'team_id', 'is_leader')
+    list_display = ('name', 'stu_id', 'class_num', 'academy', 'qq_num', 'phone', 'team_id', 'is_leader', 'submit_time', )

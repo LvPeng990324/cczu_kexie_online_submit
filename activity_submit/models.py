@@ -19,6 +19,8 @@ class SystemControl(models.Model):
 class Activity(models.Model):
     name = models.CharField(max_length=50, primary_key=True, verbose_name='活动名称')
     introduction = models.TextField(verbose_name='活动介绍')
+    title = models.CharField(max_length=50, verbose_name='报名表标题')
+    context = models.TextField(verbose_name='报名表说明')
     qq_QRcode = models.ImageField(upload_to='QRcode', verbose_name='群二维码')
     qq_num = models.CharField(max_length=20, verbose_name='群号码')
 
@@ -40,6 +42,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=15, verbose_name='手机号')
     team_id = models.CharField(max_length=5, verbose_name='队伍号')
     is_leader = models.BooleanField(default=False, verbose_name='是否队长')
+    submit_time = models.DateTimeField(auto_now_add=True, verbose_name='报名时间')
 
     def __str__(self):
         return self.name
