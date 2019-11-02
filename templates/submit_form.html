@@ -29,34 +29,34 @@
                     <div class="tm-bg-white tm-form-pad-big">
                         <div class="form-group mb-5">
                             <b><label for="name" class="black-text mb-4 big">姓名：</label></b>
-                            <input id="id_name" name="name" type="text" class="validate tm-input-white-bg">
+                            <input id="id_name" name="name" type="text" class="validate tm-input-white-bg" required>
                         </div>
                         <div class="form-group mb-5">
                             <b><label for="class_num" class="black-text mb-4 big">班级：</label></b>
-                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg">
+                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg" required>
                         </div>
                         <div class="form-group mb-5">
                             <b><label for="class_num" class="black-text mb-4 big">学院：</label></b>
-                            <input id="id_academy" name="academy" type="text" class="validate tm-input-white-bg">
+                            <input id="id_academy" name="academy" type="text" class="validate tm-input-white-bg" required>
                         </div>
                         {# 只有队员才会显示队伍号框 #}
                         {% if teammate == '队员' %}
                             <div class="form-group mb-5">
                                 <b><label for="class_num" class="black-text mb-4 big">队伍号：</label></b>
-                                <input id="id_team_id" name="team_id" type="text" class="validate tm-input-white-bg">
+                                <input id="id_team_id" name="team_id" type="text" class="validate tm-input-white-bg" required>
                             </div>
                         {% endif %}
                         <div class="form-group mb-5">
                             <b><label for="stu_id" class="black-text mb-4 big">学号：</label></b>
-                            <input id="id_stu_id" name="stu_id" type="text" class="validate tm-input-white-bg mb-4">
+                            <input id="id_stu_id" name="stu_id" type="text" class="validate tm-input-white-bg mb-4" required pattern="[0-9]{8}">
                         </div>
 						<div class="form-group mb-5">
                             <b><label for="phone" class="black-text mb-4 big">手机号：</label></b>
-                          <input id="id_phone" name="phone" type="text" class="validate tm-input-white-bg mb-4">
+                          <input id="id_phone" name="phone" type="text" class="validate tm-input-white-bg mb-4" required pattern="[0-9]{11}">
                         </div>
 						<div class="form-group mb-5">
                             <b><label for="qq_num" class="black-text mb-4 big">QQ号：</label></b>
-                          <input id="id_qq_num" name="qq_num" type="text" class="validate tm-input-white-bg mb-4">
+                          <input id="id_qq_num" name="qq_num" type="text" class="validate tm-input-white-bg mb-4" required>
                         </div>
 					</div>
                     <div class="text-center mt-5">
