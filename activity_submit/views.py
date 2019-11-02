@@ -5,6 +5,17 @@ from random import randint
 
 # 活动报名入口
 def index(response):
+    # 判断是否可以报名
+    # 如果不可以，引导此时间段不可以报名提示页面
+    if not SystemControl.objects.all()[0].can_submit:
+        # 打包QQ群信息
+        data = Activity.objects.all()[0]
+        context = {
+            'qq_num': data.qq_num,
+            'qq_QRcode': data.qq_QRcode,
+        }
+        return render(response, 'time_out_submit.html', context=context)
+    # 正常流程
     if response.method == 'POST':
         # 从首页获得成员身份
         teammate = response.POST.get('teammate')
@@ -29,6 +40,17 @@ def index(response):
 
 # 报名表
 def submit_form(response, teammate):
+    # 判断是否可以报名
+    # 如果不可以，引导此时间段不可以报名提示页面
+    if not SystemControl.objects.all()[0].can_submit:
+        # 打包QQ群信息
+        data = Activity.objects.all()[0]
+        context = {
+            'qq_num': data.qq_num,
+            'qq_QRcode': data.qq_QRcode,
+        }
+        return render(response, 'time_out_submit.html', context=context)
+    # 正常流程
     if response.method == 'POST':
         # 将信息从前端拿到
         name = response.POST.get('name')
