@@ -64,6 +64,7 @@ def submit_form(response, teammate):
                 'team_id': data.team_id,
                 'is_leader': data.is_leader,
                 'teammate_names': teammate_names,
+                'qq_QRcode': Activity.objects.all()[0].qq_QRcode,
             }
             # 引导前端页面
             return render(response, 'error_multiple_submit.html', context=context)
@@ -146,6 +147,7 @@ def submit_form(response, teammate):
             'team_id': team_id,
             'is_leader': is_leader,
             'teammate_names': teammate_names,
+            'qq_QRcode': Activity.objects.all()[0].qq_QRcode,
         }
         # 传参并引导前端页面
         return render(response, 'success.html', context=context)
