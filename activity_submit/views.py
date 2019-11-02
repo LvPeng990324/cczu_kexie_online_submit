@@ -13,6 +13,7 @@ def index(response):
         context = {
             'qq_num': data.qq_num,
             'qq_QRcode': data.qq_QRcode,
+            'background_img': data.background_img,
         }
         return render(response, 'time_out_submit.html', context=context)
     # 正常流程
@@ -29,11 +30,13 @@ def index(response):
             return HttpResponse('发生未知错误，请重试！或者联系管理员，提交错误码:1')
     else:
         # 从数据库中取出活动信息并展示到主页
+        data = Activity.objects.all()[0]
         context = {
-            'name': Activity.objects.all()[0].name,
-            'introduction': Activity.objects.all()[0].introduction,
-            'qq_num': Activity.objects.all()[0].qq_num,
-            'qq_QRcode': Activity.objects.all()[0].qq_QRcode,
+            'name': data.name,
+            'introduction': data.introduction,
+            'qq_num': data.qq_num,
+            'qq_QRcode': data.qq_QRcode,
+            'background_img': data.background_img,
         }
         return render(response, 'index.html', context=context)
 
@@ -48,6 +51,7 @@ def submit_form(response, teammate):
         context = {
             'qq_num': data.qq_num,
             'qq_QRcode': data.qq_QRcode,
+            'background_img': data.background_img,
         }
         return render(response, 'time_out_submit.html', context=context)
     # 正常流程
@@ -75,7 +79,8 @@ def submit_form(response, teammate):
             except:
                 # 返回数据库读取错误
                 return HttpResponse('数据库读取错误，重试或联系管理员，提交错误码：6')
-            # 打包报名信息以及队员姓名
+            # 打包报名信息以及队员姓名以及二维码和背景图
+            img_data = Activity.objects.all()[0]
             context = {
                 'name': name,
                 'class_num': data.class_num,
@@ -86,7 +91,8 @@ def submit_form(response, teammate):
                 'team_id': data.team_id,
                 'is_leader': data.is_leader,
                 'teammate_names': teammate_names,
-                'qq_QRcode': Activity.objects.all()[0].qq_QRcode,
+                'qq_QRcode': img_data.qq_QRcode,
+                'background_img': img_data.background_img,
             }
             # 引导前端页面
             return render(response, 'error_multiple_submit.html', context=context)
@@ -118,6 +124,7 @@ def submit_form(response, teammate):
                 context = {
                     'error_message': '队伍{}不存在!'.format(team_id),
                     'teammate': teammate,
+                    'backgroung_img': Activity.objects.all()[0].background_img,
                 }
                 return render(response, 'submit_form.html', context=context)
             if num_team_id >= SystemControl.objects.get(id=1).team_size:
@@ -125,6 +132,7 @@ def submit_form(response, teammate):
                 context = {
                     'error_message': '队伍{}已满!'.format(team_id),
                     'teammate': teammate,
+                    'background_img': Activity.objects.all()[0].background_img,
                 }
                 return render(response, 'submit_form.html', context=context)
             else:
@@ -158,7 +166,8 @@ def submit_form(response, teammate):
         except:
             # 返回数据库读取错误
             return HttpResponse('数据库读取错误，但是报名信息已成功提交，联系管理员以确认你的信息，提交错误码：4')
-        # 打包报名信息以及队员名字
+        # 打包报名信息以及队员名字以及二维码和背景图
+        data = Activity.objects.all()[0]
         context = {
             'name': name,
             'class_num': class_num,
@@ -169,7 +178,8 @@ def submit_form(response, teammate):
             'team_id': team_id,
             'is_leader': is_leader,
             'teammate_names': teammate_names,
-            'qq_QRcode': Activity.objects.all()[0].qq_QRcode,
+            'qq_QRcode': data.qq_QRcode,
+            'background_img': data.background_img,
         }
         # 传参并引导前端页面
         return render(response, 'success.html', context=context)
@@ -180,5 +190,6 @@ def submit_form(response, teammate):
             'teammate': teammate,
             'title': data.title,
             'context': data.context,
+            'background_img': data.background_img,
         }
         return render(response, 'submit_form.html', context=context)
