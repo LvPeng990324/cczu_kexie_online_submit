@@ -51,3 +51,16 @@ class Student(models.Model):
     class Meta:
         verbose_name_plural = '参赛者'
         verbose_name = '参赛者'
+
+
+# 学院专业
+class AcademyClass(models.Model):
+    academy = models.CharField(max_length=20, verbose_name='学院')
+    class_name = models.CharField(max_length=20, primary_key=True, verbose_name='专业')
+
+    def __str__(self):
+        return self.class_name
+
+    class Meta:
+        verbose_name_plural = '学院专业'
+        verbose_name = '学院专业'
