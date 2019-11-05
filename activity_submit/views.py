@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
-from.models import Activity, Student, SystemControl
+from django.http import JsonResponse
+from.models import Activity, Student, SystemControl, AcademyClass
 from random import randint
 
 
@@ -193,3 +194,16 @@ def submit_form(response, teammate):
             'background_img': data.background_img,
         }
         return render(response, 'submit_form.html', context=context)
+
+
+# 学院专业ajax接口
+def ajax_get(request):
+    # 获取前端的内容
+    academy = request.GET.get('academy')
+    # 尝试从数据库中取出此学院的专业
+    try:
+        class_name = list(AcademyClass.objects.filter(academy=academy).values('class_name'))
+    except:
+        return HttpResponse('数据库读取错误，重试或联系管理员，提交错误码：7')
+    return JsonResponse(class_name, safe=False)
+
