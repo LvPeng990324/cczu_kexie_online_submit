@@ -59,11 +59,16 @@ def submit_form(response, teammate):
     if response.method == 'POST':
         # 将信息从前端拿到
         name = response.POST.get('name')
-        class_num = response.POST.get('class_num')
         academy = response.POST.get('academy')
+        class_name = response.POST.get('class_name')
+        class_num = response.POST.get('class_num')
         stu_id = response.POST.get('stu_id')
         phone = response.POST.get('phone')
         qq_num = response.POST.get('qq_num')
+        # 将专业与班号组合
+        print('class_name = ', class_name)
+        print('class_num = ', class_num)
+        class_num = class_name+class_num
         # 判断这个学号是否已报名
         # 从数据库中查询此学号
         if len(Student.objects.filter(stu_id=stu_id)) > 0:
@@ -126,6 +131,7 @@ def submit_form(response, teammate):
                     'error_message': '队伍{}不存在!'.format(team_id),
                     'teammate': teammate,
                     'backgroung_img': Activity.objects.all()[0].background_img,
+                    'academy': AcademyClass.objects.all(),
                 }
                 return render(response, 'submit_form.html', context=context)
             if num_team_id >= SystemControl.objects.get(id=1).team_size:
@@ -134,6 +140,7 @@ def submit_form(response, teammate):
                     'error_message': '队伍{}已满!'.format(team_id),
                     'teammate': teammate,
                     'background_img': Activity.objects.all()[0].background_img,
+                    'academy': AcademyClass.objects.all(),
                 }
                 return render(response, 'submit_form.html', context=context)
             else:
@@ -185,13 +192,15 @@ def submit_form(response, teammate):
         # 传参并引导前端页面
         return render(response, 'success.html', context=context)
     else:
-        # 打包成员信息以及标题和文字并引导信息表页面
+        # 打包成员信息以及标题和文字和学院信息并引导信息表页面
         data = Activity.objects.all()[0]
+        academy = AcademyClass.objects.all()
         context = {
             'teammate': teammate,
             'title': data.title,
             'context': data.context,
             'background_img': data.background_img,
+            'academy': academy,
         }
         return render(response, 'submit_form.html', context=context)
 

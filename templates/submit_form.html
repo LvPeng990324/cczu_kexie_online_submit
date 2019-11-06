@@ -31,13 +31,25 @@
                             <b><label for="name" class="black-text mb-4 big">姓名：</label></b>
                             <input id="id_name" name="name" type="text" class="validate tm-input-white-bg" required>
                         </div>
+
                         <div class="form-group mb-5">
-                            <b><label for="class_num" class="black-text mb-4 big">班级：</label></b>
-                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg" required>
+                            <b><label for="class_num" class="black-text mb-4 big" lay-search>学院：</label></b>
+                            <select id="id_academy" name="academy" >
+                                <option value="">---请选择学院---</option>
+                                {% for aca in academy %}
+                                    <option value="{{ aca.academy }}">{{ aca.academy }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group mb-5">
-                            <b><label for="class_num" class="black-text mb-4 big">学院：</label></b>
-                            <input id="id_academy" name="academy" type="text" class="validate tm-input-white-bg" required>
+                            <b><label for="class_num" class="black-text mb-4 big">专业：</label></b>
+                            <select id="id_class_name" name="class_name" >
+                                <option value="">---请选择专业---</option>
+                            </select>
+                        </div>
+                         <div class="form-group mb-5">
+                            <b><label for="class_num" class="black-text mb-4 big">班号：</label></b>
+                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg" required>
                         </div>
                         {# 只有队员才会显示队伍号框 #}
                         {% if teammate == '队员' %}
@@ -73,6 +85,33 @@
             </div>
         </footer>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static '/form_1/js/materialize.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+
+    <script>
+    $(function(){
+      $("#id_academy").change(function(){
+        $.getJSON('{% url 'ajax_get' %}',{academy: $(this).val()}, function(json, TextStatus){
+            //先清空
+            $("#id_class_name").empty().append('<option value="">---请选择专业---</option>');
+            $('id_class_name').formSelect();
+            var options = '';
+            for (var i = 0; i < json.length; i++) {
+                options += '<option value="' + json[i]['class_name'] + '">' + json[i]['class_name'] + '</option>';
+                //alert(options);
+            }
+            $("#id_class_name").prepend(options);
+            $('#id_class_name').formSelect();
+        })
+      })
+    })
+    </script>
 
 </body>
 
