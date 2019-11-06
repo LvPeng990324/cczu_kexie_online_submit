@@ -21,6 +21,6 @@ class StudentInformation(admin.ModelAdmin):
 
 @admin.register(AcademyClass)
 class AcademyClassInformation(admin.ModelAdmin):
-    list_display = ('academy', 'class_name', )
+    list_display = ('class_name', 'academy', )
     list_filter = ('academy', 'class_name', )
     search_fields = ('academy', 'class_name', )
