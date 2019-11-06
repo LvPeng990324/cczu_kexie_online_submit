@@ -8,9 +8,9 @@
 
 - ### 本系统基于django2.2，使用python3.7开发。
 - ### 数据库
-    - ####postgresql-12
+    - #### postgresql-12
 - ### 服务器配置：
-    - ####nginx+gunicorn+django
+    - #### nginx+gunicorn+django
 
 ### 使用到的python库：
 - django2.2
