@@ -131,7 +131,7 @@ def submit_form(response, teammate):
                     'error_message': '队伍{}不存在!'.format(team_id),
                     'teammate': teammate,
                     'backgroung_img': Activity.objects.all()[0].background_img,
-                    'academy': AcademyClass.objects.all(),
+                    'academy': AcademyClass.objects.values('academy').distinct(),
                 }
                 return render(response, 'submit_form.html', context=context)
             if num_team_id >= SystemControl.objects.get(id=1).team_size:
@@ -140,7 +140,7 @@ def submit_form(response, teammate):
                     'error_message': '队伍{}已满!'.format(team_id),
                     'teammate': teammate,
                     'background_img': Activity.objects.all()[0].background_img,
-                    'academy': AcademyClass.objects.all(),
+                    'academy': AcademyClass.objects.values('academy').distinct(),
                 }
                 return render(response, 'submit_form.html', context=context)
             else:
@@ -194,7 +194,7 @@ def submit_form(response, teammate):
     else:
         # 打包成员信息以及标题和文字和学院信息并引导信息表页面
         data = Activity.objects.all()[0]
-        academy = AcademyClass.objects.all()
+        academy = AcademyClass.objects.values('academy').distinct()
         context = {
             'teammate': teammate,
             'title': data.title,
