@@ -34,7 +34,7 @@
 
                         <div class="form-group mb-5">
                             <b><label for="class_num" class="black-text mb-4 big" lay-search>学院：</label></b>
-                            <select id="id_academy" name="academy" >
+                            <select id="id_academy" name="academy" required>
                                 <option value="">---请选择学院---</option>
                                 {% for aca in academy %}
                                     <option value="{{ aca.academy }}">{{ aca.academy }}</option>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group mb-5">
                             <b><label for="class_num" class="black-text mb-4 big">专业：</label></b>
-                            <select id="id_class_name" name="class_name" >
+                            <select id="id_class_name" name="class_name" required>
                                 <option value="">---请选择专业---</option>
                             </select>
                         </div>
