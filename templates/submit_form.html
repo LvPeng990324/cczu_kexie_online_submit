@@ -49,7 +49,7 @@
                         </div>
                          <div class="form-group mb-5">
                             <b><label for="class_num" class="black-text mb-4 big">班号：</label></b>
-                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg" required>
+                            <input id="id_class_num" name="class_num" type="text" class="validate tm-input-white-bg" required pattern="[0-9]{3}">
                         </div>
                         {# 只有队员才会显示队伍号框 #}
                         {% if teammate == '队员' %}
