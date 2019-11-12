@@ -37,7 +37,7 @@ class Activity(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=10, verbose_name='姓名')
     stu_id = models.CharField(max_length=10, primary_key=True, verbose_name='学号')
-    class_num = models.CharField(max_length=10, verbose_name='班级')
+    class_num = models.CharField(max_length=20, verbose_name='班级')
     academy = models.CharField(max_length=20, verbose_name='学院')
     qq_num = models.CharField(max_length=15, verbose_name='QQ号')
     phone = models.CharField(max_length=15, verbose_name='手机号')
