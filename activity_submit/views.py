@@ -66,8 +66,6 @@ def submit_form(response, teammate):
         phone = response.POST.get('phone')
         qq_num = response.POST.get('qq_num')
         # 将专业与班号组合
-        print('class_name = ', class_name)
-        print('class_num = ', class_num)
         class_num = class_name+class_num
         # 判断这个学号是否已报名
         # 从数据库中查询此学号
