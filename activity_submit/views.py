@@ -39,7 +39,13 @@ def index(response):
             'qq_QRcode': data.qq_QRcode,
             'background_img': data.background_img,
         }
-        return render(response, 'index.html', context=context)
+        # 判断活动是否是单人活动
+        # 如果是单人活动就引导single_index页面
+        # 如果不是单人活动就引导index页面
+        if SystemControl.objects.all()[0].team_size == 1:
+            return render(response, 'single_index.html', context=context)
+        else:
+            return render(response, 'index.html', context=context)
 
 
 # 报名表
